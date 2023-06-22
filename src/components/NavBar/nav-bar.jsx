@@ -1,53 +1,30 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import { CartWidget } from "./CarritoIcon/cart-widget"
+import { Typography } from "@mui/material"
 
-function NavBar() {
-    return (
-        <>
-        <ContainerNav>
-            <nav>
+export const NavBar = () => {
+    return <header>
+        <nav className='box-categories'>
+            <Typography>
                 <h3>CaletaStore</h3>
-                <div className='box-categories'>
+            </Typography>
+            <ul>
+                <li>
                     <a href="/">Inicio</a>
+                </li>
+                <li>
                     <a href="/">Productos</a>
-                    <a href="/">Carrito</a>
+                </li>
+                <li>
                     <a href="/">Contacto</a>
-                </div>
-            </nav>
-            
-        </ContainerNav>
-        </>
-    )
-}
-
-export default NavBar
-
-const ContainerNav = styled.header`
-*{
-    margin: 0%;
-    padding: 0%;
-}
-nav{
-    background-color: grey;
-    h3{
-        color: white;
-        font-weight: 200 bold;
-    }
-
-    padding: 1rem 0rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+                </li>
+                <li>
+                    <a href="/">Carrito</a>
+                </li>
+            </ul>
+            <CartWidget />
+        </nav>
+    </header>
     
-    .box-categories{
-        display: flex;
-        // justify-content: center;
-        gap: 1rem;
-        margin-right: 45%;
-        a{
-            color: white;
-            text-decoration: none;
-        }
-    }
+
 }
-`
