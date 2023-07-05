@@ -1,0 +1,16 @@
+.container-counter{
+    margin: 0% 15%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    /* gap: 2rem; */
+}
+
+.botones-item-count{
+    margin: 1.5rem 1rem;
+}
+
+.box-btn-comprar{
+    display: flex;
+    margin: 1.2rem 0rem;
+}

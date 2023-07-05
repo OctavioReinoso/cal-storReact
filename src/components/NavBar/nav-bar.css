@@ -5,6 +5,17 @@
     align-items: center;
     justify-content: space-around;
 }
+a{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    padding: 10px 0px;
+}
+
+.logo-navbar{
+    padding: 10px 0px;
+    width: 40px;
+    height: 40px;
+}
 
 h3{
     color: white;
@@ -15,9 +26,8 @@ ul{
     gap: 1rem;
     margin-right: 15%;
 }
-li{
-    display: inline-block;
-}
+
+
 a{
     color: white;
     text-decoration: none;
