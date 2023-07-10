@@ -34,7 +34,13 @@ export const getItemsCatalogo = () => {
     
 }
 
-
+export const getItemsById = (itemId) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(itemsCatalogo.find(prod => prod.id === itemId))
+        }, 1000);
+    })
+}
 
 
     //     {

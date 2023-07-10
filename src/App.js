@@ -1,20 +1,27 @@
 import './App.css';
 import './components/NavBar/nav-bar.css'
-// import './components/ItemListContainer/ItemCount/Contador/item-count'
+import './components/ItemCount/item-count.css'
 import { NavBar } from './components/NavBar/nav-bar.jsx';
 import { Home } from './components/pages/home';
-// import { CarritoItemCount }  from './components/ItemListContainer/ItemCount/item-count';
+import { ItemDetailContainer } from './components/ItemDetailContainer/Item-container';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ItemsList } from './components/ItemList/items-list';
+
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-
-      <Home />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route exact path={'/'} Component={() => <Home />} />
+          <Route exact path={'/products/:category'} Component={() => <ItemsList /> } />
+          <Route exact path={'/products/:category/id'} element={() => <ItemDetailContainer /> }/>
+          <Route exact path={'/cart'} Component={() => <p>Carrito</p> } />
+        </Routes>
+        
+      </BrowserRouter>
       
-      {/* CONTADOR
-       <CarritoItemCount stock={10} initial={0} onAdd={(quantity) => alert("Compraste "+ quantity +" unidades")}/> */
-      }
     </div>
   );
 }

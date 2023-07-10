@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React, { useState } from 'react'   
 
 export const CarritoItemCount = ({stock, initial, onAdd}) => {
@@ -12,17 +13,16 @@ export const CarritoItemCount = ({stock, initial, onAdd}) => {
     const decrement = () => {
         quantity > 1 && setQuantity(quantity - 1)
     }
-    
+
     return (
     <div className='container-counter'>
-        <h2>Contador</h2>
-        <button className='botones-item-count' onClick={decrement}>-</button>
+        <Button sx={{margin:'0rem 1rem'}} onClick={decrement}>-</Button>
         <h4> {quantity} </h4>
-        <button className='botones-item-count' onClick={increment}>+</button>
+        <Button sx={{margin:'0rem 1rem'}} onClick={increment}>+</Button>
         <div className='box-btn-comprar'>
-            <button onClick={()=> onAdd(quantity)} disabled={!stock}>
+            <Button sx={{border:'1px solid', margin:'0.8rem 0rem'}} onClick={()=> onAdd(quantity)} disabled={!stock}>
                 Comprar
-            </button>
+            </Button>
         </div>
     </div>
     )

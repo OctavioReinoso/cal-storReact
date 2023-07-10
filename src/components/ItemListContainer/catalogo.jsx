@@ -22,18 +22,18 @@ export const CatalogoProductos = () => {
     },[])
 
     return (
-    <Box sx={{display:'flex', justifyContent:'center', margin:'3rem 0rem' , gap:'4rem'}}>
-        {
-            loading ?
-            <CircularProgress />
-            :
-            items.map((item, index) => {
-                return (
-                    <CardItem key={index + item.title} title={item.title} description={item.description} price={item.price} imgURL={item.pictureURL}  />
-                )
-            })
-        }
-    </Box>
+        <Box sx={{display:'flex', justifyContent:'center', margin:'3rem 0rem' , gap:'4rem'}}>
+            {
+                loading ?
+                <CircularProgress />
+                :
+                items.map((item, index) => {
+                    return (
+                        <CardItem key={index + item.title} title={item.title} description={item.description} price={item.price} imgURL={item.pictureURL}  />
+                    )
+                })
+            }
+        </Box>
         
     )
 }

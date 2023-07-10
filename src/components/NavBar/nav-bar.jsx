@@ -8,12 +8,12 @@ export const NavBar = () => {
         <nav className='box-categories'>
             <Typography sx={{display:'flex', gap:'5px', justifyContent:'center'}}>
                 <img src={image} alt="logoCaletaStore" className="logo-navbar"/>
-                <a href="./components/pages/Home/home">CaletaStore</a>
+                <a href="/">CaletaStore</a>
             </Typography>
             <ul>
-                <Button sx={{color:'white', border:'1px solid'}} >Remeras</Button>
-                <Button sx={{color:'white', border:'1px solid'}}>Zapatillas</Button>
-                <Button sx={{color:'white', border:'1px solid'}}>Pantalones</Button>
+                <Button sx={{color:'white', border:'1px solid'}} href="/">Inicio</Button>
+                <Button sx={{color:'white', border:'1px solid'}} href="/products/:category" >Productos</Button>
+                <Button sx={{color:'white', border:'1px solid'}}>Contacto</Button>
             </ul>
             <CartWidget />
         </nav>
