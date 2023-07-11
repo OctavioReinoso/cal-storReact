@@ -2,9 +2,10 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, CardMedia } from '@mui/material';
+import { CardActionArea, CardActions, CardMedia } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-export const CardItem = ({ title, description, price, imgURL }) => {
+export const CardItem = ({id, title, description, price, imgURL, category }) => {
     return (
             <Card sx={{ maxWidth: 400, display: 'flex'}}>
                 <CardActionArea>
@@ -25,10 +26,10 @@ export const CardItem = ({ title, description, price, imgURL }) => {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary" sx={{border: '1px solid'}}> 
+                <CardActions sx={{backgroundColor:'grey'}}>
+                    <Link to={`/products/${category}/${id}`}>
                         Ver detalle
-                    </Button>        
+                    </Link>
                 </CardActions>
             </Card>
     )

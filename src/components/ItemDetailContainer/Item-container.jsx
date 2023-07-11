@@ -1,21 +1,29 @@
 import React from 'react'
-import { getItemsById } from '../pages/Home/items-catalogo';
+import { getItemsById } from '../../productos'
 import { Box } from '@mui/material';
 import { ItemDetail } from '../ItemDetail/item-detail';
+import { useParams } from 'react-router-dom';
 
 export const ItemDetailContainer = () => {
     const [producto, setProducto] = React.useState(null);
     
+    const { category, itemId } = useParams();
+
     React.useEffect(() =>{
-        getItemsById(1)
+        getItemsById(itemId)
         .then(res =>{
             setProducto(res)
         })
-    }, [])
+        .catch(() => {
+            console.log('error404')
+        })
+    }, [itemId])
 
     return (
         <Box>
-            <ItemDetail {...producto} />
+            {
+            producto && <ItemDetail {...producto} category={category} />
+            }
         </Box>
     )
 }

@@ -5,6 +5,7 @@ const itemsCatalogo = [
         title: "Remera blanca",
         description: "...",
         price: 7000,
+        category: 'remeras',
         pictureURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXVGNi_ae99fJaAQZrw7pqEhKlQ89o6R-BQw&usqp=CAU"
     },
     {
@@ -12,6 +13,7 @@ const itemsCatalogo = [
         title: "Jean",
         description: "...",
         price: 12000,
+        category:'pantalones',
         pictureURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCJvGhUuiRK80Ts4RAhtm24lJro7lJRoh4-DarpezSZ4YZpHEqostldvtQoye5kflNcN4&usqp=CAU"
     },
     {
@@ -19,6 +21,7 @@ const itemsCatalogo = [
         title: "Zapatillas blanca",
         description: "...",
         price: 20000,
+        category:'zapatillas',
         pictureURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR7aso1U3W2I17aEkSY3vYXNIm-ZhRvIumzlUAW38-FxrVVUJQ6HoSR-ZOqd16-i8FPn8&usqp=CAU"
     }
 ]
@@ -39,6 +42,14 @@ export const getItemsById = (itemId) => {
         setTimeout(() => {
             resolve(itemsCatalogo.find(prod => prod.id === itemId))
         }, 1000);
+    })
+}
+
+export const getItemsByCategory = (categoryProd) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(itemsCatalogo.find(categ => categ.category === categoryProd))
+        }, 1000)
     })
 }
 

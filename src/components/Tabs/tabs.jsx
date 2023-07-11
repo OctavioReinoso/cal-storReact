@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom'
 
 export const CustomTabPanel = (props) => {
     const { children, value, index, ...other } = props;
@@ -24,31 +25,31 @@ export const CustomTabPanel = (props) => {
     )
 } 
 
-export const BasicTabs = () => {
-    const [value, setValue] = React.useState(0);
+export const BasicTabs = ({current, items}) => {
+        
+    const navigate = useNavigate();
+    
+    const handleChange = (_, newValue) => {
+        navigate('/products/' + newValue);
+    };
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    }
+    
 
     return (
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', display:'flex', justifyContent:'center', margin:'0.5rem 0rem' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Remeras" />
-                    <Tab label="Zapatillas"/>
-                    <Tab label="Jeans" />
+                <Tabs value={current} onChange={handleChange} aria-label="basic tabs example">
+                    {
+                        items.map((item, index) => {
+                            return(
+                                <Tab key={item.id + index} value={item.id} label={item.name} />
+                            )
+                        })
+                    }
+                    
                 </Tabs>
             </Box>
-            <CustomTabPanel value={value} index={0}>
-                Item One
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-                Item Two
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                Item Three
-            </CustomTabPanel>
+            
         </Box>
     )
 }

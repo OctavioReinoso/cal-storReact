@@ -1,10 +1,10 @@
 import React from 'react'
 import { Box, CircularProgress } from '@mui/material'
 import { CardItem }  from '../CardItem/card-item';
-import { getItemsCatalogo } from '../pages/Home/items-catalogo';
+import { getItemsCatalogo } from '../../productos';
 
 
-export const CatalogoProductos = () => {
+export const ItemListContainerr = () => {
     
     const [items, setItem] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
@@ -29,7 +29,7 @@ export const CatalogoProductos = () => {
                 :
                 items.map((item, index) => {
                     return (
-                        <CardItem key={index + item.title} title={item.title} description={item.description} price={item.price} imgURL={item.pictureURL}  />
+                        <CardItem key={index + item.title} id={item.id} title={item.title} description={item.description} price={item.price} imgURL={item.pictureURL} category={item.category}  />
                     )
                 })
             }

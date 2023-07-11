@@ -1,8 +1,9 @@
-import { Box, Card, CardContent, Typography, CardMedia, CardActionArea } from '@mui/material'
+import { Box, Card, CardContent, Typography, CardMedia, CardActionArea, CardActions } from '@mui/material'
 import React from 'react'
 import { CarritoItemCount } from '../ItemCount/item-count'
+import { Link } from 'react-router-dom'
 
-export const ItemDetail = ({id, title, description, price, pictureURL}) => {
+export const ItemDetail = ({id, title, description, price, pictureURL, category}) => {
     return (
         <Box sx={{display:'flex', justifyContent:'center', margin:'3rem 0rem'}}>
             <Card sx={{ width: 430, height: 440}}>
@@ -26,12 +27,11 @@ export const ItemDetail = ({id, title, description, price, pictureURL}) => {
                         </Box>
                     </CardContent>
                 </CardActionArea>
-                
-                {/* <CardActions sx={{justifyContent:'center'}}>
-                    <Button size="small" color="primary" sx={{border: '1px solid'}}> 
-                        Agregar al carrito
-                    </Button>        
-                </CardActions> */}
+                <CardActions sx={{justifyContent:'center'}}>
+                    <Link to={`/products/${category}/${id}`}>
+                        ... 
+                    </Link>       
+                </CardActions>
                 <CarritoItemCount stock={10} initial={1} onAdd={(quantity) => console.log("Compraste "+ quantity +" unidades")}/>
             </Card>
         </Box>
