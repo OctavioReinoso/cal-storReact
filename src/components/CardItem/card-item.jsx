@@ -17,6 +17,7 @@ export const CardItem = ({id, title, description, price, imgURL, category }) => 
                             component="img"
                             height="140"
                             image={imgURL}
+                            category={category}
                             alt={title}/>
                         <Typography variant="body1" color="text.secondary">
                             {price}

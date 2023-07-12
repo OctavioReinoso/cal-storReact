@@ -14,10 +14,10 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path={'/'} Component={() => <Home />} />
-          <Route exact path={'/products/:category'} Component={() => <ItemsList /> } />
-          <Route exact path={'/products/:category/:id'} element={() => <ItemDetailContainer /> }/>
-          <Route exact path={'/cart'} Component={() => <p>Carrito</p> } />
+          <Route exact path={'/'} element={<Home />} />
+          <Route exact path={'/products/:category'} element={<ItemsList /> } />
+          <Route exact path={'/products/:category/:id'} element={<ItemDetailContainer /> }/>
+          <Route exact path={'/cart'} element={ <p>Carritooooo</p> } />
         </Routes>
         
       </BrowserRouter>

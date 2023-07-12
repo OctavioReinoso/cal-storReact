@@ -1,7 +1,7 @@
-import { Box, Card, CardContent, Typography, CardMedia, CardActionArea, CardActions } from '@mui/material'
+import { Box, Card, CardContent, Typography, CardMedia, CardActionArea } from '@mui/material'
 import React from 'react'
 import { CarritoItemCount } from '../ItemCount/item-count'
-import { Link } from 'react-router-dom'
+
 
 export const ItemDetail = ({id, title, description, price, pictureURL, category}) => {
     return (
@@ -12,6 +12,7 @@ export const ItemDetail = ({id, title, description, price, pictureURL, category}
                         <CardMedia  
                             component="img"
                             height="300"
+                            category={category}
                             image={pictureURL}
                             alt={title}/>
                         <Box sx={{margin:'2rem', alignItems:'center'}}>
@@ -27,11 +28,6 @@ export const ItemDetail = ({id, title, description, price, pictureURL, category}
                         </Box>
                     </CardContent>
                 </CardActionArea>
-                <CardActions sx={{justifyContent:'center'}}>
-                    <Link to={`/products/${category}/${id}`}>
-                        ... 
-                    </Link>       
-                </CardActions>
                 <CarritoItemCount stock={10} initial={1} onAdd={(quantity) => console.log("Compraste "+ quantity +" unidades")}/>
             </Card>
         </Box>

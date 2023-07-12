@@ -37,10 +37,10 @@ export const getItemsCatalogo = () => {
     
 }
 
-export const getItemsById = (itemId) => {
+export const getItemsById = (idItem) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(itemsCatalogo.find(prod => prod.id === itemId))
+            resolve(itemsCatalogo.find(prod => prod.id === idItem))
         }, 1000);
     })
 }
@@ -48,7 +48,7 @@ export const getItemsById = (itemId) => {
 export const getItemsByCategory = (categoryProd) => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(itemsCatalogo.find(categ => categ.category === categoryProd))
+            resolve(itemsCatalogo.filter(categ => categ.category === categoryProd))
         }, 1000)
     })
 }
