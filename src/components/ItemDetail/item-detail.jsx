@@ -1,26 +1,45 @@
-import { Box, Card, CardContent, Typography, CardMedia, CardActionArea } from '@mui/material'
+import { Box, Card, CardContent, Typography, CardMedia, CardActionArea, CardActions } from '@mui/material'
 import React from 'react'
-import { CarritoItemCount } from '../ItemCount/item-count'
+import { ItemCount } from '../ItemCount/item-count'
+import { AppContext } from '../../context/contextProvider'
 
+export const ItemDetail = ({id, title, description, price, pictureURL, category, stock }) => {
+    
+    const { agregarProdCarrito } = React.useContext(AppContext)
 
-export const ItemDetail = ({id, title, description, price, pictureURL, category}) => {
+    const agregarAlCarrito = (quantity) =>{
+        agregarProdCarrito({
+            id: id,
+            title: title,
+            description: description,
+            price: price,
+            pictureURL: pictureURL,
+            category: category,
+            stock: stock,
+            quantity: quantity
+        })
+    };
+    
     return (
-        <Box sx={{display:'flex', justifyContent:'center', margin:'3rem 0rem'}}>
-            <Card sx={{ width: 430, height: 440}}>
+        <Box sx={{display:'flex', justifyContent:'center', margin:'2rem 0rem'}}>
+            <Card sx={{ width: 470, height: 470, padding:'5px', boxShadow:'1px 1px 12px'}}>
                 <CardActionArea sx={{padding:'1rem'}}>
                     <CardContent sx={{display:'flex', alignItems:'center', gap:'0rem'}}>
-                        <CardMedia  
+                        <CardMedia sx={{width:260, height: 230}}
                             component="img"
                             height="300"
-                            category={category}
                             image={pictureURL}
+                            category={category}
                             alt={title}/>
-                        <Box sx={{margin:'2rem', alignItems:'center'}}>
+                        <Box sx={{padding:'0px 15px', alignItems:'center'}}>
                             <Typography variant="h4" component="div">
                                 {title}
                             </Typography>
                             <Typography variant="h5" color="text.primary">
-                                {price}
+                                {'$' + price}
+                            </Typography>
+                            <Typography variant="h6" component="div">
+                                {'Stock: '+ stock}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 {description || ""}
@@ -28,7 +47,11 @@ export const ItemDetail = ({id, title, description, price, pictureURL, category}
                         </Box>
                     </CardContent>
                 </CardActionArea>
-                <CarritoItemCount stock={10} initial={1} onAdd={(quantity) => console.log("Compraste "+ quantity +" unidades")}/>
+                
+                <CardActions>
+                    <ItemCount stock={stock} agregarAlCarrito={agregarAlCarrito} />
+                </CardActions>
+                
             </Card>
         </Box>
     )

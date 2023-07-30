@@ -3,25 +3,27 @@ import './components/NavBar/nav-bar.css'
 import './components/ItemCount/item-count.css'
 import { NavBar } from './components/NavBar/nav-bar.jsx';
 import { Home } from './components/ItemListContainer/home'
-import { ItemDetailContainer } from './components/ItemDetailContainer/Item-container';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ItemsList } from './components/ItemList/items-list';
+import { ItemContainer } from './components/ItemList/item-container';
+// import { ItemDetail } from './components/ItemDetail/item-detail';
+import { ItemDetailContainer } from './components/ItemDetailContainer/Item-container';
+import { ContextProvider } from './context/contextProvider';
 
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route exact path={'/'} element={<Home />} />
-          <Route exact path={'/products/:category'} element={<ItemsList /> } />
-          <Route exact path={'/products/:category/:id'} element={<ItemDetailContainer /> }/>
-          <Route exact path={'/cart'} element={ <p>Carritooooo</p> } />
-        </Routes>
-        
+        <ContextProvider>
+          <NavBar />
+          <Routes>
+            <Route exact path={'/'} element={<Home />} />
+            <Route exact path={'/products/:category'} element={<ItemContainer /> } />
+            <Route exact path={'/products/:category/:id'} element={ <ItemDetailContainer /> }/>
+            <Route exact path={'/cart'} element={ <p>Carritooooo</p> } />
+          </Routes>
+        </ContextProvider>
       </BrowserRouter>
-      
     </div>
   );
 }

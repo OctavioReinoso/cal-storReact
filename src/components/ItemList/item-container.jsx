@@ -3,6 +3,7 @@ import React from 'react'
 import { BasicTabs } from '../Tabs/tabs'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getItemsByCategory, getItemsCatalogo } from '../../productos'
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
 import { ItemList } from './itemList'
 
 
@@ -21,7 +22,7 @@ const filtroCategoria = (id) => {
     }
 }
 
-export const ItemsList = () => {
+export const ItemContainer = () => {
     const [ items, setItems ] =  React.useState([]);
 
     const { category } = useParams();
@@ -42,13 +43,27 @@ export const ItemsList = () => {
         }
     }, [category, navigate])
 
-    React.useEffect(() => {
-        getItemsByCategory(filtroCategoria(category))
-        .then((res) => {
-            setItems(res)
-        })
+    // React.useEffect(() => {
+    //     getItemsByCategory(filtroCategoria(category))
+    //     .then((res) => {
+    //         setItems(res)
+    //     })
         
-    }, [category])
+    // }, [category])
+
+    React.useEffect(() => {
+        const db = getFirestore();
+
+        const getCollection = collection(db, 'productos')
+
+        const q = query(getCollection, where('category', '==', "remeras"))
+
+        getDocs(q)
+        .then((snapshot) => {
+            console.log(snapshot.docs.map(el => ({id: el.id, ...el.data()})));
+
+        })
+    }, [])
 
     return (
         <Box>
