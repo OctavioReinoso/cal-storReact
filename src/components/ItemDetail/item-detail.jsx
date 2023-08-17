@@ -3,32 +3,30 @@ import React from 'react'
 import { ItemCount } from '../ItemCount/item-count'
 import { AppContext } from '../../context/contextProvider'
 
-export const ItemDetail = ({id, title, description, price, pictureURL, category, stock }) => {
+export const ItemDetail = ({id, title, description, price, imageURL, category, stock }) => {
     
-    const { agregarProdCarrito } = React.useContext(AppContext)
+    // const [quantityAdd, setQuantityAdd] = React.useState(0)
+    const { agregarProd } = React.useContext(AppContext)
 
-    const agregarAlCarrito = (quantity) =>{
-        agregarProdCarrito({
+    const agregarAlCarrito = (quantity) => {
+        agregarProd({
             id: id,
             title: title,
-            description: description,
-            price: price,
-            pictureURL: pictureURL,
-            category: category,
-            stock: stock,
-            quantity: quantity
+            priceUnit: price,
+            quantity: quantity,
+            imageURL: imageURL
         })
-    };
+    }
     
     return (
         <Box sx={{display:'flex', justifyContent:'center', margin:'2rem 0rem'}}>
-            <Card sx={{ width: 470, height: 470, padding:'5px', boxShadow:'1px 1px 12px'}}>
+            <Card sx={{ width: 450, height: 400, padding:'5px', boxShadow:'1px 1px 12px'}}>
                 <CardActionArea sx={{padding:'1rem'}}>
                     <CardContent sx={{display:'flex', alignItems:'center', gap:'0rem'}}>
-                        <CardMedia sx={{width:260, height: 230}}
+                        <CardMedia sx={{width:260, height: 230, boxShadow:'1px 1px 8px'}}
                             component="img"
                             height="300"
-                            image={pictureURL}
+                            image={imageURL}
                             category={category}
                             alt={title}/>
                         <Box sx={{padding:'0px 15px', alignItems:'center'}}>

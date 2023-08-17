@@ -1,6 +1,6 @@
 import React from "react"
 import { CartWidget } from "../CartWidget/cart-widget"
-import { Typography } from "@mui/material"
+import { Button, Typography } from "@mui/material"
 import image from './imglogo.png'
 import { Link } from 'react-router-dom'
 import { AppContext } from "../../context/contextProvider"
@@ -11,21 +11,16 @@ export const NavBar = () => {
 
     return <header>
         <nav className='box-categories'>
-            <Typography sx={{display:'flex', gap:'5px', justifyContent:'center'}}>
-                <img src={image} alt="logoCaletaStore" className="logo-navbar"/>
-                <Link to={'/'}>CaletaStore</Link>
-            </Typography>
-            <ul>
                 <Link to={'/'}>
-                    Inicio
+                    <Typography sx={{display:'flex', gap:'5px', marginLeft:'10rem',alignItems:'center', fontFamily:'fantasy', fontSize:'25px'}}>
+                        <img src={image} alt="logoCaletaStore" className="logo-navbar"/>
+                        CaletaStore
+                    </Typography>
                 </Link>
                 <Link to={'/products/:category'}>
-                    Productos
+                    <Button sx={{color:'white', margin:'0rem 2rem 0rem 42rem'}}>SHOP</Button>
                 </Link>
-                <Link>
-                    Contacto
-                </Link>
-            </ul>
+            
             {
                 cartQuantity === 0 ?
                 <CartWidget cartQuantity={'0'}/> 

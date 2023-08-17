@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button } from '@mui/material'
-import { useNavigate } from 'react-router-dom';
+import { Box, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const ItemCount = ({stock, agregarAlCarrito}) => {
     
@@ -8,14 +9,15 @@ export const ItemCount = ({stock, agregarAlCarrito}) => {
     const [clicked, setClicked] = React.useState(false);
 
     const [quantity, setQuantity] = React.useState(1);
+    
     const increment = () => {
         quantity < stock && setQuantity(quantity + 1)
     }
     const decrement = () => {
-        quantity <= 1 && setQuantity(quantity - 1)
+        quantity >= 2 && setQuantity(quantity - 1)
     }
 
-    const actCarrito = () => {
+    const compraCarrito = () => {
         agregarAlCarrito(quantity)
         setQuantity(1)
         setClicked(true)
@@ -29,21 +31,25 @@ export const ItemCount = ({stock, agregarAlCarrito}) => {
         <div className='container-counter'>
             {
                 clicked ? 
-                <Button onClick={compraNavigate}>Ver en el carrito</Button> 
+                <Box sx={{display:'flex', gap:'1.2rem'}}>
+                    <Button onClick={compraNavigate} sx={{padding:'0.2rem 0.2rem', border:'1px solid grey', backgroundColor:'grey', color:'black', fontFamily:'unset'}}>Ver en el carrito </Button>
+                    <Link to='/products/:category'>
+                        <Button sx={{padding:'0.2rem 0.2rem', border:'1px solid grey', backgroundColor:'grey', color:'black', fontFamily:'unset'}}>
+                            Seguir comprando
+                        </Button>
+                    </Link>
+                </Box>
                 :
-            <>
-                <Button sx={{margin:'0rem 1rem'}} onClick={decrement}>-</Button>
+            <Box sx={{display:'flex', gap:'0.6rem'}}>
+                <Button onClick={decrement}>-</Button>
                 <h4> {quantity} </h4>
-                <Button sx={{margin:'0rem 1rem'}} onClick={increment}>+</Button>
-                <div className='box-btn-comprar'>
-                    <Button onClick={actCarrito} sx={{marginLeft:'3'}}>
-                        Agregar al carrito
-                    </Button>
-                </div>
-            </>
+                <Button onClick={increment}>+</Button>
+                <Button onClick={compraCarrito} sx={{border:'1px solid grey', backgroundColor:'grey', color:'black', fontFamily:'unset'}} >
+                    Agregar al carrito
+                </Button>
+            </Box>
             }    
         </div>
     )
 }
 
-// export default CarritoItemCount;

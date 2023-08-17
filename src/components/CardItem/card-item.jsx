@@ -5,15 +5,15 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions, CardMedia, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export const CardItem = ({id, title, description, price, imgURL, category }) => {
+export const CardItem = ({id, title, description, price, imageURL, category }) => {
     return (
-            <Card sx={{ width: 350, height:350, display: 'flex', flexDirection:'column',alignItems:'center', textAlign:'center'}}>
+            <Card sx={{ width: 280, height:330, display: 'flex', backgroundColor:'white', flexDirection:'column',alignItems:'center', textAlign:'center', padding:'2% 1%', boxShadow:'2px 2px 12px'}}>
                 <CardActionArea>
                     <CardContent sx={{display:'flex', flexDirection:'column'}}>
-                        <CardMedia 
+                        <CardMedia
                             component="img"
-                            height="200"
-                            image={imgURL}
+                            height="195"
+                            image={imageURL}
                             category={category}
                             alt={title}/>
                         <Typography gutterBottom variant="h5" component="div">
@@ -27,9 +27,9 @@ export const CardItem = ({id, title, description, price, imgURL, category }) => 
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActions sx={{display:'flex', height:40}}>
-                    <Link to={`/products/:${category}/${id}`}>
-                        <Button>
+                <CardActions sx={{display:'flex', height:10}}>
+                    <Link to={`/products/:${category}/${id}`} >
+                        <Button sx={{border:'1px solid grey', backgroundColor:'grey', color:'white', fontFamily:'fantasy'}}>
                             Ver detalle
                         </Button>
                     </Link>
