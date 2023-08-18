@@ -39,7 +39,8 @@ export const UserInfo = ({carrito, createOrder }) => {
 
     return (
         <Box component="form" sx={{display:'flex', justifyContent:'center', flexDirection:'column', margin:'2rem 0rem',  '& .MuiTextField-root': { m: 1, width: '25ch' },}} noValidate autoComplete="off"> 
-            <Typography sx={{textAlign:'center', color:'white', fontFamily:'fantasy', fontSize:'1.6rem'}}>User Info</Typography>
+            {/* <Typography sx={{textAlign:'center', color:'white', fontFamily:'fantasy', fontSize:'1.6rem'}}>User Info</Typography> */}
+            <Typography sx={{textAlign:'center', color:'white', fontSize:'1rem'}}>*Para terminar la compra registre sus datos*</Typography>
             <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', backgroundColor:'grey', margin:'1rem 28rem', padding:'2rem', borderRadius:'10px'}}>
                 <TextField sx={{border:'1px solid white', color:'white'}}
                 onChange={(e) => setNombre(e.target.value)}

@@ -1,7 +1,5 @@
-import { Box, Card, Typography, CardMedia, Button } from '@mui/material'
-// import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { Box, Typography, Button } from '@mui/material'
 import React from 'react'
-// import { CardItem } from '../CardItem/card-item';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../../context/contextProvider';
 import { UserInfo } from '../User/user-info';
@@ -46,11 +44,6 @@ export const Cart = () => {
 
             <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center', gap:'1rem', alignItems:'center'}}>
                 <div style={{display:'flex', flexDirection:'row', justifyContent:'center', gap:'1rem', alignItems:'center'}}>
-                    <Link to='/checkout'>
-                        <Button sx={{color:'white', border:'white 1px solid'}}>
-                            Checkout
-                        </Button>
-                    </Link>
                     <Button onClick={cartClean} sx={{color:'white', border:'white 1px solid'}}>
                         Limpiar carrito
                     </Button>

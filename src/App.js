@@ -8,7 +8,6 @@ import { ItemContainer } from './components/ItemList/item-container';
 import { ItemDetailContainer } from './components/ItemDetailContainer/Item-detail-container';
 import { ContextProvider } from './context/contextProvider';
 import { Cart } from './components/Cart/cart';
-// import { UserInfo } from './components/User/user-info';
 
 function App() {
   return (
@@ -20,8 +19,7 @@ function App() {
             <Route exact path={'/'} element={<Home />} />
             <Route exact path={'/products/:category'} element={<ItemContainer /> } />
             <Route exact path={'/products/:category/:id'} element={ <ItemDetailContainer /> }/>
-            <Route exact path={'/cart'} element={<Cart /> } />
-            {/* <Route exact path={'/checkout'} element={<UserInfo /> } /> */}
+            <Route exact path={'/cart'} element={<Cart /> } /> 
           </Routes>
         </ContextProvider>
       </BrowserRouter>
